@@ -11,7 +11,7 @@ const App = () => {
   // the state properties here.
   
   const [characters, setCharacters] = useState([])
-  const [currentCharacterId, setCurrentCharacterId] = useState(null)
+  const [currentCharacterId, setCurrentCharacterId] = useState()
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -36,14 +36,20 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
+    <StyledApp>
       <h1 className="Header">Characters</h1>
       {characters.map(elem => {
-        return <Character key={characters} characters={elem} action={openDetails}/>
+        return <Character key={characters.id} characters={elem} action={openDetails}/>
       })}
       {currentCharacterId && <CharacterDetails characterId={currentCharacterId} close={closeDetails} />}
-    </div>
+    </StyledApp>
   );
 }
 
 export default App;
+
+
+const StyledApp = styled.div`
+    color: navy;
+    text-align: center;
+`
