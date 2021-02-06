@@ -1,21 +1,19 @@
 // Write your Character component here
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 
-export default function Character (props) {
-    const { people } = props;
+export default function Character ({characters, action}) {
+    
+
 
     return (
         <div className="container">
-            <h1>{people.name}</h1>
-            <div className="info">
-                <p>Gender: {people.gender}</p>
-                <p>Height: {people.height}</p>
-                <p>Mass: {people.mass}</p>
-                <p>Birth Year: {people.birth_year}</p>
-                <p>Eye Color: {people.eye_color}</p>
-                <p>Hair Color: {people.hair_color}</p>
-                <p>Films: {people.films}</p>
-            </div>
+            <h2>{characters.name}</h2>
+            <button onClick={() => action(characters.id)}>About Me</button>
         </div>
     )
 } 
+
+const StyledCharacterDiv = styled.div`
+
+`
